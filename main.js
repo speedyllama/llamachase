@@ -70,7 +70,7 @@ cc.game.onStart = function(){
     cc.view.setResolutionPolicy(cc.ResolutionPolicy.NO_BORDER);
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
-        cc.director.runScene(new HelloWorldScene());
+        cc.director.runScene(new WelcomeScene());
     }, this);
 };
 cc.game.run();
