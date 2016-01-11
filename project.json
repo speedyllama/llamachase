@@ -13,7 +13,7 @@
 
     "jsList" : [
         "src/resource.js",
-        "src/scenes/WelcomeScene.js",
+        "src/scene/WelcomeScene.js",
         "src/app.js"
     ]
 }
