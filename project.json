@@ -13,6 +13,8 @@
 
     "jsList" : [
         "src/resource.js",
+        "src/util/ladybug.js",
+        "src/util/i18n.js",
         "src/scene/WelcomeScene.js",
         "src/app.js"
     ]
