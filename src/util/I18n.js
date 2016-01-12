@@ -1,8 +1,9 @@
 (function(){
     var I18n = cc.Class.extend({
         map: null,
+        defaultLang: null,
 
-        ctor: function(text) {
+        ctor: function(text, defaultLang) {
             var lines = text.split('\n');
             var langKeys;
             var map = {};
@@ -21,6 +22,18 @@
                 }
             }
             this.map = map;
+
+            if (defaultLang !== undefined) {
+                this.defaultLang = defaultLang;
+            }
+        },
+
+        setDefaultLang: function(defaultLang) {
+            this.defaultLang = defaultLang;
+        },
+
+        getDefaultLang: function() {
+            return this.defaultLang;
         },
 
         getText: function(lang, key) {
@@ -36,7 +49,14 @@
             } else {
                 return val;
             }
-        }
+        },
+
+        getText: function(key) {
+            return this.getText(this.defaultLang, key);
+        },
+
+
+
     });
 
     ladybug.util.I18n = I18n;
