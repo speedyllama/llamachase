@@ -1,6 +1,25 @@
-var WelcomeScene = cc.Scene.extend({
-    onEnter: function() {
-        this._super();
-        this.addChild(new cc.LayerGradient(new cc.Color(203, 204, 0), new cc.Color(152, 153, 0)));
-    }
-});
+(function() {
+    var LlamaLayer = cc.Layer.extend({
+        ctor: function() {
+            this._super();
+
+            var llama = new cc.Sprite(res.SpeedyLlama);
+            llama.setScale(0.5, 0.5);
+            llama.x = -512;
+            llama.y = 1600;
+
+            var action = cc.moveTo(0.5, 540, 1600);
+
+            this.addChild(llama);
+            llama.runAction(action);
+        }
+    });
+
+    WelcomeScene = cc.Scene.extend({
+        onEnter: function () {
+            this._super();
+            this.addChild(new cc.LayerGradient(new cc.Color(203, 204, 0), new cc.Color(152, 153, 0)));
+            this.addChild(new LlamaLayer());
+        }
+    });
+})();
