@@ -6,10 +6,23 @@
         ctor: function() {
             var text = cc.loader.getRes(I18N_PATH);
             var lines = text.split('\n');
+            var languageKeys;
+            var map = {};
             for (var lineNum = 0; lineNum < lines.length; lineNum++) {
                 var line = lines[lineNum];
-                console.log(lineNum + ' : ' + line);
+                var keys = line.split('\t');
+                if (lineNum == 0) {
+                    languageKeys = keys;
+                    for (var languageIndex = 1; languageIndex < languageKeys.length; languageIndex++) {
+                        map[languageKeys[languageIndex]] = {};
+                    }
+                } else {
+                    for (var languageIndex = 1; languageIndex < languageKeys.length; languageIndex++) {
+                        map[languageKeys[languageIndex]][keys[0]] = keys[languageIndex];
+                    }
+                }
             }
+            this.map = map;
         }
     });
 
