@@ -15,11 +15,23 @@
         }
     });
 
+    var MenuLayer = cc.Layer.extend({
+        ctor: function() {
+            this._super();
+
+            var label = new cc.LabelTTF('Hello World', 'Marck Script', 164);
+            label.x = 512;
+            label.y = 512;
+            this.addChild(label);
+        }
+    });
+
     WelcomeScene = cc.Scene.extend({
         onEnter: function () {
             this._super();
             this.addChild(new cc.LayerGradient(new cc.Color(203, 204, 0), new cc.Color(152, 153, 0)));
             this.addChild(new LlamaLayer());
+            this.addChild(new MenuLayer());
         }
     });
 })();

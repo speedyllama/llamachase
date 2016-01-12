@@ -53,10 +53,7 @@
 
         getText: function(key) {
             return this.getText(this.defaultLang, key);
-        },
-
-
-
+        }
     });
 
     ladybug.util.I18n = I18n;
