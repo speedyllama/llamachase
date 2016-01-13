@@ -17,6 +17,7 @@
         "src/util/ladybug.js",
         "src/util/i18n.js",
         "src/scene/WelcomeScene.js",
+        "src/scene/HelpScene.js",
         "src/app.js"
     ]
 }
