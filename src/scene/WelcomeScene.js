@@ -19,10 +19,16 @@
         ctor: function() {
             this._super();
 
-            var label = new cc.LabelTTF('Hello World', 'Marck Script', 164);
-            label.x = 512;
-            label.y = 512;
-            this.addChild(label);
+            cc.MenuItemFont.setFontName('Marck Script');
+            cc.MenuItemFont.setFontSize(164);
+            var help = new cc.MenuItemFont('Help');
+            var play = new cc.MenuItemFont('Play');
+            var about = new cc.MenuItemFont('About');
+            var menu = new cc.Menu(help, play, about);
+            menu.alignItemsVertically();
+            menu.x = 512;
+            menu.y = 700;
+            this.addChild(menu);
         }
     });
 
