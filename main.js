@@ -60,12 +60,14 @@ cc.game.onStart = function(){
     // Adjust viewport meta
     cc.view.adjustViewPort(true);
     // Setup the resolution policy and design resolution size
-    cc.view.setDesignResolutionSize(1080, 1920, cc.ResolutionPolicy.SHOW_ALL);
+    cc.view.setDesignResolutionSize(1080, 1920, cc.ResolutionPolicy.NO_BORDER);
     // Instead of set design resolution, you can also set the real pixel resolution size
     // Uncomment the following line and delete the previous line.
     // cc.view.setRealPixelResolution(960, 640, cc.ResolutionPolicy.SHOW_ALL);
+
+    // TODO: There is some issues when phone screen is rotated.
     // The game will be resized when browser size change
-    cc.view.resizeWithBrowserSize(false);
+    cc.view.resizeWithBrowserSize(true);
     // Set resolution policy
     cc.view.setResolutionPolicy(cc.ResolutionPolicy.NO_BORDER);
     //load resources
