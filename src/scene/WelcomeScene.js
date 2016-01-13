@@ -21,9 +21,9 @@
 
             cc.MenuItemFont.setFontName('Marck Script');
             cc.MenuItemFont.setFontSize(164);
-            var help = new cc.MenuItemFont('Help', function(){cc.director.runScene(HelpScene)});
-            var play = new cc.MenuItemFont('Play', function(){cc.director.runScene(PlayScene)});
-            var about = new cc.MenuItemFont('About', function(){cc.director.runScene(AboutScene)});
+            var help = new cc.MenuItemFont('Help', function(){cc.director.runScene(new HelpScene())});
+            var play = new cc.MenuItemFont('Play', function(){cc.director.runScene(new PlayScene())});
+            var about = new cc.MenuItemFont('About', function(){cc.director.runScene(new AboutScene())});
             var menu = new cc.Menu(help, play, about);
             menu.alignItemsVertically();
             menu.x = 512;
