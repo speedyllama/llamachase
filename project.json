@@ -16,6 +16,7 @@
         "src/util/const.js",
         "src/util/ladybug.js",
         "src/util/i18n.js",
+        "src/mixin/RopeThrow.js",
         "src/scene/WelcomeScene.js",
         "src/scene/HelpScene.js",
         "src/app.js"
