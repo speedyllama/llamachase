@@ -36,10 +36,13 @@
             return this.defaultLang;
         },
 
-        getText: function(lang, key) {
+        getText: function(key, lang) {
+            if (lang == undefined) {
+                lang = this.defaultLang;
+            }
             var val;
             try {
-                val = this.map[lang][key];
+                val = this.map[lang][key.toLowerCase()];
             } catch (e) {
                 val = undefined;
             }
@@ -49,10 +52,6 @@
             } else {
                 return val;
             }
-        },
-
-        getText: function(key) {
-            return this.getText(this.defaultLang, key);
         }
     });
 

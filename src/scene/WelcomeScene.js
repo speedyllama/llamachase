@@ -19,11 +19,11 @@
         ctor: function() {
             this._super();
 
-            cc.MenuItemFont.setFontName('Marck Script');
+            cc.MenuItemFont.setFontName(i18n.getText('Marck Script'));
             cc.MenuItemFont.setFontSize(164);
-            var help = new cc.MenuItemFont('Help', function(){cc.director.runScene(new HelpScene())});
-            var play = new cc.MenuItemFont('Play', function(){cc.director.runScene(new PlayScene())});
-            var about = new cc.MenuItemFont('About', function(){cc.director.runScene(new AboutScene())});
+            var help = new cc.MenuItemFont(i18n.getText('Help'), function(){cc.director.runScene(new HelpScene())});
+            var play = new cc.MenuItemFont(i18n.getText('Play'), function(){cc.director.runScene(new PlayScene())});
+            var about = new cc.MenuItemFont(i18n.getText('About'), function(){cc.director.runScene(new AboutScene())});
             var menu = new cc.Menu(help, play, about);
             menu.alignItemsVertically();
             menu.x = 512;

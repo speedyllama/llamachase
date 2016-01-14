@@ -1,2 +1,5 @@
 en_us	zh_cn
-Hello World	你好,世界!
+help	帮助
+play	开始游戏
+about	关于我们
+Marck Script	Arial
