@@ -46,14 +46,20 @@
             this.endPos = touch.getLocation();
             var line = new cc.DrawNode();
             line.drawSegment(this.beginPos, this.endPos, 10, new cc.Color(0, 255, 0));
+            this.moveRope();
             this.layer.addChild(line);
             return true;
         },
 
         moveRope: function() {
             this.ropeMoving = true;
-            var action = cc.moveTo(this.endPos);
-
+            var action = cc.sequence(
+                cc.moveTo(1, this.endPos),
+                cc.callFunc(function(){
+                    this.ropeMoving = false;
+                }.bind(this))
+            );
+            this.rope.runAction(action);
         }
     });
 })();
