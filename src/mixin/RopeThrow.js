@@ -56,8 +56,9 @@
                 return false;
             }
 
+            var winSize = cc.director.getWinSize();
             var beginY = this.beginPos.y;
-            var beginYthreshold = cc.director.getWinSize().height / 4;
+            var beginYthreshold = winSize.height * ROPE_BEGIN_POS_THRESHOLD;
             if (beginY > beginYthreshold) {
                 return false;
             }
