@@ -10,19 +10,21 @@
         // Callback return
         isCaught: false,
 
+        anchorPos: null,
         beginPos: null,
         endPos: null,
         rope: null,
         ropeMoving: false,
-
+        ropeSpeed: null,
 
         ctor: function(layer) {
             this.layer = layer;
 
+            this.anchorPos = new cc.Point(512, 256);
             var rope = new cc.Sprite('res/rope.png');
             this.rope = rope;
-            rope.x = 512;
-            rope.y = 256;
+            rope.x = this.anchorPos.x;
+            rope.y = this.anchorPos.y;
             this.layer.addChild(rope);
 
             if ('touches' in cc.sys.capabilities) {
@@ -73,7 +75,7 @@
                         }
                     }
                 }.bind(this)),
-                cc.moveTo(1, this.beginPos),
+                cc.moveTo(1, this.anchorPos),
                 cc.callFunc(function(){
                     this.ropeMoving = false;
                 }.bind(this))
