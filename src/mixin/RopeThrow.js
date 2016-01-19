@@ -6,6 +6,10 @@
         // Returns false to continue retrieving the rope,
         // true means if it handled.
         catchCallback: null,
+
+        // Callback return
+        isCaught: false,
+
         beginPos: null,
         endPos: null,
         rope: null,
@@ -62,9 +66,14 @@
                 cc.moveTo(1, this.endPos),
                 cc.callFunc(function(){
                     if (typeof this.catchCallback == 'function') {
-                        this.catchCallback.call(this);
+                        this.isCaught = this.catchCallback.call(this);
+                        if (this.isCaught) {
+                            this.rope.stopAllActions();
+                            this.ropeMoving = false;
+                        }
                     }
-                }),
+                }.bind(this)),
+                cc.moveTo(1, this.beginPos),
                 cc.callFunc(function(){
                     this.ropeMoving = false;
                 }.bind(this))
