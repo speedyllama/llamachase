@@ -5,6 +5,7 @@
         ctor: function() {
             this._super();
 
+            this.addChild(BackgroundFactory.newYellowBackground());
             this.ropeThrow = new RopeThrow(this);
         }
     });

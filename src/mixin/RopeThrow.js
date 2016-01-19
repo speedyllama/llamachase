@@ -8,7 +8,7 @@
             var rope = new cc.Sprite('res/rope.png');
             this.rope = rope;
             rope.x = 512;
-            rope.y = 512;
+            rope.y = 256;
             this.layer.addChild(rope);
 
             if ('touches' in cc.sys.capabilities) {
