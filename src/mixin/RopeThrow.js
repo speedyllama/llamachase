@@ -48,11 +48,6 @@
             }
             this.beginPos = touch.getLocation();
 
-            var y = this.beginPos.y;
-            var threshold = cc.director.getWinSize().height / 4;
-            if (this.beginPos.y > (cc.director.getWinSize.height / 4)) { // TODO: why is this false
-                return false;
-            }
             return true;
         },
 
@@ -60,6 +55,13 @@
             if (this.ropeMoving) {
                 return false;
             }
+
+            var beginY = this.beginPos.y;
+            var beginYthreshold = cc.director.getWinSize().height / 4;
+            if (beginY > beginYthreshold) {
+                return false;
+            }
+
             this.endPos = touch.getLocation();
             var line = new cc.DrawNode();
             line.drawSegment(this.beginPos, this.endPos, 10, new cc.Color(0, 255, 0));
