@@ -2,6 +2,16 @@
     RopeThrow = cc.Class.extend({
         layer: null,
 
+        // Called when the rope reached the destination.
+        // Returns false to continue retrieving the rope,
+        // true means if it handled.
+        catchCallback: null,
+        beginPos: null,
+        endPos: null,
+        rope: null,
+        ropeMoving: false,
+
+
         ctor: function(layer) {
             this.layer = layer;
 
@@ -25,11 +35,6 @@
                 }, layer);
             }
         },
-
-        beginPos: null,
-        endPos: null,
-        rope: null,
-        ropeMoving: false,
 
         onTouchBegan: function(touch) {
             if (this.ropeMoving) {
@@ -55,6 +60,7 @@
             this.ropeMoving = true;
             var action = cc.sequence(
                 cc.moveTo(1, this.endPos),
+                cc.callFunc(this.)
                 cc.callFunc(function(){
                     this.ropeMoving = false;
                 }.bind(this))
