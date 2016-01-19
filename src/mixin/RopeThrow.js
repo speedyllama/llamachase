@@ -47,6 +47,12 @@
                 return false;
             }
             this.beginPos = touch.getLocation();
+
+            var y = this.beginPos.y;
+            var threshold = cc.director.getWinSize().height / 4;
+            if (this.beginPos.y > (cc.director.getWinSize.height / 4)) { // TODO: why is this false
+                return false;
+            }
             return true;
         },
 
