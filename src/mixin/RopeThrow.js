@@ -60,7 +60,11 @@
             this.ropeMoving = true;
             var action = cc.sequence(
                 cc.moveTo(1, this.endPos),
-                cc.callFunc(this.)
+                cc.callFunc(function(){
+                    if (typeof this.catchCallback == 'function') {
+                        this.catchCallback.call(this);
+                    }
+                }),
                 cc.callFunc(function(){
                     this.ropeMoving = false;
                 }.bind(this))
