@@ -58,8 +58,8 @@
 
             var winSize = cc.director.getWinSize();
             var beginY = this.beginPos.y;
-            var beginYthreshold = winSize.height * ROPE_BEGIN_POS_THRESHOLD;
-            if (beginY > beginYthreshold) {
+            var beginYThreshold = winSize.height * ROPE_BEGIN_POS_THRESHOLD;
+            if (beginY > beginYThreshold) {
                 return false;
             }
 
