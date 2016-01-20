@@ -84,6 +84,7 @@
                         }
                     }
                 }.bind(this)),
+                cc.delayTime(ROPE_WAIT),
                 cc.moveTo(1, this.anchorPos),
                 cc.callFunc(function(){
                     this.ropeMoving = false;
