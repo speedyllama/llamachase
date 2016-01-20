@@ -64,17 +64,21 @@
             }
 
             this.endPos = touch.getLocation();
-            var line = new cc.DrawNode();
-            line.drawSegment(this.beginPos, this.endPos, 10, new cc.Color(0, 255, 0));
+
+            var ropeLength = Math.sqrt(Math.pow(this.beginPos.x - this.endPos.x, 2) +
+                Math.pow(this.beginPos.y - this.endPos.y, 2));
+            var ropePercentage = ropeLength / winSize.height;
+            ropePercentage = Math.min(ROPE_MAX_PERCENTAGE, ropePercentage);
+            this.ropeSpeed= ropePercentage / ROPE_MAX_PERCENTAGE * ROPE_MAX_SPEED;
+
             this.moveRope();
-            this.layer.addChild(line);
             return true;
         },
 
         moveRope: function() {
             this.ropeMoving = true;
             var action = cc.sequence(
-                cc.moveTo(1, this.endPos),
+                cc.moveTo(1 / this.ropeSpeed, this.endPos),
                 cc.callFunc(function(){
                     if (typeof this.catchCallback == 'function') {
                         this.isCaught = this.catchCallback.call(this);
@@ -85,7 +89,7 @@
                     }
                 }.bind(this)),
                 cc.delayTime(ROPE_WAIT),
-                cc.moveTo(1, this.anchorPos),
+                cc.moveTo(1 / this.ropeSpeed * ROPE_RETRIVE_FACTOR, this.anchorPos),
                 cc.callFunc(function(){
                     this.ropeMoving = false;
                 }.bind(this))
