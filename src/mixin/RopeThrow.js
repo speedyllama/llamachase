@@ -17,7 +17,6 @@
         rope: null,
         ropeMoving: false,
         ropeLength: null,
-        ropeSpeed: null,
 
         ctor: function(layer) {
             this.layer = layer;
@@ -82,9 +81,6 @@
                 (this.endPos.y - this.beginPos.y) * ropePercentage + this.anchorPos.y
             );
 
-            // TODO
-            this.ropeSpeed = 1;
-
             this.moveRope();
             return true;
         },
@@ -92,7 +88,7 @@
         moveRope: function() {
             this.ropeMoving = true;
             var action = cc.sequence(
-                cc.moveTo(1 / this.ropeSpeed, this.targetPos).easing(cc.easeBackIn()),
+                cc.moveTo(this.ropeLength / ROPE_SPEED, this.targetPos).easing(cc.easeBackIn()),
                 cc.callFunc(function(){
                     if (typeof this.catchCallback == 'function') {
                         this.isCaught = this.catchCallback.call(this);
@@ -103,7 +99,7 @@
                     }
                 }.bind(this)),
                 cc.delayTime(ROPE_WAIT),
-                cc.moveTo(1 / this.ropeSpeed * ROPE_RETRIVE_FACTOR, this.anchorPos),
+                cc.moveTo(this.ropeLength / ROPE_RETRIEVE_SPEED, this.anchorPos),
                 cc.callFunc(function(){
                     this.ropeMoving = false;
                 }.bind(this))

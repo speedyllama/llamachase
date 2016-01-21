@@ -11,7 +11,5 @@ const ROPE_WAIT = 0.5;
 // Once the rope length reaches the following threshold, it is considered full length.
 // This is to determine the rope speed.
 const ROPE_MAX_PERCENTAGE = 0.5;
-// Max speedy of the rope throw
-const ROPE_MAX_SPEED = 1 / 0.2;
-// Rope retrieve time factor. Rope retrieving is slower than throwing.
-const ROPE_RETRIVE_FACTOR = 2;
+const ROPE_SPEED = 1080 / 0.5;
+const ROPE_RETRIEVE_SPEED = 1080 / 1;
