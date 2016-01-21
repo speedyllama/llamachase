@@ -13,8 +13,10 @@
         anchorPos: null,
         beginPos: null,
         endPos: null,
+        targetPos: null,
         rope: null,
         ropeMoving: false,
+        ropeLength: null,
         ropeSpeed: null,
 
         ctor: function(layer) {
@@ -65,11 +67,19 @@
 
             this.endPos = touch.getLocation();
 
-            var ropeLength = Math.sqrt(Math.pow(this.beginPos.x - this.endPos.x, 2) +
+            var lineLength = Math.sqrt(Math.pow(this.beginPos.x - this.endPos.x, 2) +
                 Math.pow(this.beginPos.y - this.endPos.y, 2));
-            var ropePercentage = ropeLength / winSize.height;
-            ropePercentage = Math.min(ROPE_MAX_PERCENTAGE, ropePercentage);
-            this.ropeSpeed= ropePercentage / ROPE_MAX_PERCENTAGE * ROPE_MAX_SPEED;
+            var linePercentage = lineLength / (winSize.height * ROPE_MAX_PERCENTAGE);
+            linePercentage = Math.min(1, linePercentage);
+            this.ropeLength = linePercentage * winSize.height;
+            var ropePercentage = this.ropeLength / lineLength;
+            this.targetPos = new cc.Point(
+                (this.endPos.x - this.beginPos.x) * ropePercentage + this.anchorPos.x,
+                (this.endPos.y - this.beginPos.y) * ropePercentage + this.anchorPos.y
+            );
+
+            // TODO
+            this.ropeSpeed = 1;
 
             this.moveRope();
             return true;
@@ -78,7 +88,7 @@
         moveRope: function() {
             this.ropeMoving = true;
             var action = cc.sequence(
-                cc.moveTo(1 / this.ropeSpeed, this.endPos),
+                cc.moveTo(1 / this.ropeSpeed, this.targetPos),
                 cc.callFunc(function(){
                     if (typeof this.catchCallback == 'function') {
                         this.isCaught = this.catchCallback.call(this);
