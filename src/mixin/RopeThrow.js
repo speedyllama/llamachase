@@ -85,7 +85,18 @@
             return true;
         },
 
-        moveRope: function() {
+        moveRope: function(targetPos) {
+            if (targetPos!== undefined) {
+                // Mock a touch
+                this.onTouchBegan({
+                    getLocation: function(){return this.anchorPos}.bind(this)
+                });
+                this.onTouchEnded({
+                    getLocation: function(){return targetPos}
+                });
+                return;
+            }
+
             this.ropeMoving = true;
             var action = cc.sequence(
                 cc.moveTo(this.ropeLength / ROPE_SPEED, this.targetPos).easing(cc.easeBackIn()),
