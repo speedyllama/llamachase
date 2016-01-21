@@ -6,8 +6,6 @@
             this._super();
 
             this.addChild(BackgroundFactory.newYellowBackground());
-            this.ropeThrow = new RopeThrow(this);
-            this.ropeThrow.moveRope(new cc.Point(300, 1000));
 
             var llama = new cc.Sprite(res.SpeedyLlama);
             llama.setScale(0.5, 0.5);
@@ -23,6 +21,9 @@
             this.addChild(llama);
             llama.runAction(move);
             llama.runAction(jump);
+
+            this.ropeThrow = new RopeThrow(this);
+            this.ropeThrow.moveRope(new cc.Point(300, 1000));
         }
     });
 })();
