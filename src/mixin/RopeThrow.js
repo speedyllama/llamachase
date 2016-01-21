@@ -67,6 +67,10 @@
 
             this.endPos = touch.getLocation();
 
+            if (this.endPos.y < this.beginPos.y) {
+                return false;
+            }
+
             var lineLength = Math.sqrt(Math.pow(this.beginPos.x - this.endPos.x, 2) +
                 Math.pow(this.beginPos.y - this.endPos.y, 2));
             var linePercentage = lineLength / (winSize.height * ROPE_MAX_PERCENTAGE);
@@ -88,7 +92,7 @@
         moveRope: function() {
             this.ropeMoving = true;
             var action = cc.sequence(
-                cc.moveTo(1 / this.ropeSpeed, this.targetPos),
+                cc.moveTo(1 / this.ropeSpeed, this.targetPos).easing(cc.easeBackIn()),
                 cc.callFunc(function(){
                     if (typeof this.catchCallback == 'function') {
                         this.isCaught = this.catchCallback.call(this);
