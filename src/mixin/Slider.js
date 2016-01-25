@@ -46,7 +46,6 @@
             }
 
             var slide = this.slides[this.page];
-            var text = slide.text || '';
             var buttonText = slide.buttonText || i18n.getText('Next');
             var callback = slide.callback || function(){this.next()}.bind(this);
 
@@ -56,12 +55,13 @@
             cc.MenuItemFont.setFontName(i18n.getText(this.buttonFont));
             cc.MenuItemFont.setFontSize(this.buttonFontSize);
             var buttonSprite = new cc.MenuItemFont(i18n.getText(buttonText), callback);
+            var menu = new cc.Menu(buttonSprite);
             //buttonSprite.setPosition(this.position.x, this.position.y + textSprite.height + this.buttonPadding);
-            buttonSprite.setPosition(this.position.x, 1500);
+            menu.setPosition(this.position.x, 1500);
 
             this.currentSliderLayer = new cc.Layer();
             this.currentSliderLayer.addChild(textSprite);
-            this.currentSliderLayer.addChild(buttonSprite);
+            this.currentSliderLayer.addChild(menu);
 
             this.layer.addChild(this.currentSliderLayer);
         }

@@ -30,8 +30,7 @@
             var slides = [
                 {
                     text: 'Text 1',
-                    button: 'button 1',
-                    callback: function(){cc.console.log('###### This');}
+                    button: 'button 1'
                 },{
                     text: 'Text 2',
                     button: 'button 2'
