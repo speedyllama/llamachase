@@ -1,6 +1,7 @@
 (function(){
     HelpScene = cc.Scene.extend({
         ropeThrow: null,
+        slider: null,
 
         ctor: function() {
             this._super();
@@ -24,6 +25,19 @@
 
             this.ropeThrow = new RopeThrow(this);
             this.ropeThrow.moveRope(new cc.Point(300, 1000));
+
+            var sliderOptions = {};
+            var slides = [
+                {
+                    text: 'Text 1',
+                    button: 'button 1',
+                    callback: function(){cc.console.log('###### This');}
+                },{
+                    text: 'Text 2',
+                    button: 'button 2'
+                }
+            ];
+            this.slider = new Slider(this, slides, sliderOptions);
         }
     });
 })();

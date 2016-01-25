@@ -18,6 +18,7 @@
         "src/util/i18n.js",
         "src/helper/BackgroundFactory.js",
         "src/mixin/RopeThrow.js",
+        "src/mixin/Slider.js",
         "src/scene/WelcomeScene.js",
         "src/scene/HelpScene.js",
         "src/app.js"
