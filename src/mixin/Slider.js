@@ -52,7 +52,7 @@
             var buttonText = slide.button || 'Next';
             var callback = slide.callback || function(){this.next()}.bind(this);
 
-            var textSprite = new cc.LabelTTF(slide.text, this.font, this.fontSize, cc.TEXT_ALIGNMENT_CENTER);
+            var textSprite = new cc.LabelTTF(slide.text, this.font, this.fontSize, cc.size(this.width, 0), cc.TEXT_ALIGNMENT_CENTER);
             textSprite.setPosition(this.position.x, this.position.y);
 
             cc.MenuItemFont.setFontName(i18n.getText(this.buttonFont));

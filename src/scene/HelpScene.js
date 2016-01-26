@@ -30,9 +30,10 @@
             var slides = [
                 {
                     text: 'Text 1',
-                    button: 'button 1'
+                    button: 'button 1',
+                    callback: function(){setTimeout(function(){this.slider.next();}.bind(this), 1000);}.bind(this)
                 },{
-                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultrices mattis viverra. Morbi commodo neque nec facilisis euismod. Pellentesque dictum sagittis lacinia. Aliquam vestibulum maximus mi, eget ornare nisi. Praesent tempus tempor viverra. Proin eget nibh mauris. Praesent a dui vulputate, eleifend dui eget, volutpat dolor. '
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultrices mattis viverra. Morbi commodo neque nec facilisis euismod. '
                 }
             ];
             this.slider = new Slider(this, slides, sliderOptions);
