@@ -6,6 +6,7 @@
         options: null,
         position: null,
         width: null,
+        showBackground: true,
         font: null,
         fontSize: null,
         buttonFont: null,
@@ -22,6 +23,7 @@
             var winSize = cc.director.getWinSize();
             this.position = options.position || new cc.Point(winSize.width / 2, winSize.height / 2);
             this.width = options.width || winSize.width / 8 * 7;
+            this.showBackground = options.showBackground || true;
             this.font = options.font || 'Arial';
             this.fontSize = options.fontSize || 72;
             this.buttonFont = options.buttonFont || 'Arial';
@@ -62,6 +64,9 @@
             menu.setPosition(this.position.x, this.position.y - textSprite.height - this.buttonPadding);
 
             this.currentSliderLayer = new cc.Layer();
+            if (this.showBackground) {
+                this.currentSliderLayer.addChild(BackgroundFactory.newGreyAlphaBackground());
+            }
             this.currentSliderLayer.addChild(textSprite);
             this.currentSliderLayer.addChild(menu);
 
