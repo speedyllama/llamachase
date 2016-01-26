@@ -1,6 +1,7 @@
 var res = {
     i18n: "res/i18n.txt",
     SpeedyLlama: "res/SpeedyLlama.png",
+    Finger: "res/Finger.png",
     MarckScript: "res/marck_script.ttf",
 
     HelloWorld_png : "res/HelloWorld.png"
