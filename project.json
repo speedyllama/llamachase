@@ -19,6 +19,7 @@
         "src/helper/BackgroundFactory.js",
         "src/mixin/RopeThrow.js",
         "src/mixin/Slider.js",
+        "src/mixin/Llama.js",
         "src/scene/WelcomeScene.js",
         "src/scene/HelpScene.js",
         "src/app.js"
