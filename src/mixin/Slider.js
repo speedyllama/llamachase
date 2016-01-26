@@ -34,7 +34,6 @@
         },
 
         next: function() {
-            console.info('this.page = ' + this.page);
             if (!this.layer) {
                 return;
             }
@@ -43,6 +42,10 @@
 
             if (this.currentSliderLayer) {
                 this.layer.removeChild(this.currentSliderLayer, true);
+            }
+
+            if (this.page > this.slides.length - 1) {
+                return;
             }
 
             var slide = this.slides[this.page];
