@@ -49,6 +49,7 @@
                                     cc.delayTime(3),
                                     cc.callFunc(function(){
                                         this.removeChild(finger);
+                                        this.ropeThrow.disable();
                                         this.slider.next();
                                     }, this)
                                 ));
