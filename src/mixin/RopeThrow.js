@@ -17,6 +17,7 @@
         rope: null,
         ropeMoving: false,
         ropeLength: null,
+        enabled: true,
 
         ctor: function(layer) {
             this.layer = layer;
@@ -44,7 +45,7 @@
         },
 
         onTouchBegan: function(touch) {
-            if (this.ropeMoving) {
+            if (this.ropeMoving || !this.enabled) {
                 return false;
             }
             this.beginPos = touch.getLocation();
@@ -53,7 +54,7 @@
         },
 
         onTouchEnded: function(touch) {
-            if (this.ropeMoving) {
+            if (this.ropeMoving || !this.enabled) {
                 return false;
             }
 
@@ -116,6 +117,14 @@
                 }.bind(this))
             );
             this.rope.runAction(action);
+        },
+
+        enable: function() {
+            this.enabled = true;
+        },
+
+        disable: function() {
+            this.enabled = false;
         }
     });
 })();
