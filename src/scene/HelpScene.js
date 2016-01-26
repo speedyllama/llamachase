@@ -29,9 +29,15 @@
             var sliderOptions = {};
             var slides = [
                 {
-                    text: 'Text 1',
-                    button: 'button 1',
-                    callback: function(){setTimeout(function(){this.slider.next();}.bind(this), 1000);}.bind(this)
+                    text: i18n.getText('Swipe on your screen to try to catch the llama. The longer you swipe, the farther the rope goes.'),
+                    button: i18n.getText('Watch Demo'),
+                    callback: function(){
+                        var finger = new cc.Sprite(res.Finger);
+                        finger.setPosition(512, 512);
+                        this.addChild(finger);
+                        this.slider.hide();
+                        setTimeout(function(){this.slider.next()}.bind(this), 3000);
+                    }.bind(this)
                 },{
                     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultrices mattis viverra. Morbi commodo neque nec facilisis euismod. '
                 }

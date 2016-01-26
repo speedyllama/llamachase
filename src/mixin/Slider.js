@@ -71,6 +71,12 @@
             this.currentSliderLayer.addChild(menu);
 
             this.layer.addChild(this.currentSliderLayer);
+        },
+
+        hide: function() {
+            if (this.currentSliderLayer) {
+                this.layer.removeChild(this.currentSliderLayer, true);
+            }
         }
     });
 })();
