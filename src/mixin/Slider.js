@@ -49,7 +49,7 @@
             }
 
             var slide = this.slides[this.page];
-            var buttonText = slide.buttonText || i18n.getText('Next');
+            var buttonText = slide.button || 'Next';
             var callback = slide.callback || function(){this.next()}.bind(this);
 
             var textSprite = new cc.LabelTTF(slide.text, this.font, this.fontSize, cc.TEXT_ALIGNMENT_CENTER);
@@ -59,8 +59,7 @@
             cc.MenuItemFont.setFontSize(this.buttonFontSize);
             var buttonSprite = new cc.MenuItemFont(i18n.getText(buttonText), callback);
             var menu = new cc.Menu(buttonSprite);
-            //buttonSprite.setPosition(this.position.x, this.position.y + textSprite.height + this.buttonPadding);
-            menu.setPosition(this.position.x, 1500);
+            menu.setPosition(this.position.x, this.position.y - textSprite.height - this.buttonPadding);
 
             this.currentSliderLayer = new cc.Layer();
             this.currentSliderLayer.addChild(textSprite);

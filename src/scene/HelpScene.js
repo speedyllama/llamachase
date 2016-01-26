@@ -32,8 +32,7 @@
                     text: 'Text 1',
                     button: 'button 1'
                 },{
-                    text: 'Text 2',
-                    button: 'button 2'
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultrices mattis viverra. Morbi commodo neque nec facilisis euismod. Pellentesque dictum sagittis lacinia. Aliquam vestibulum maximus mi, eget ornare nisi. Praesent tempus tempor viverra. Proin eget nibh mauris. Praesent a dui vulputate, eleifend dui eget, volutpat dolor. '
                 }
             ];
             this.slider = new Slider(this, slides, sliderOptions);
