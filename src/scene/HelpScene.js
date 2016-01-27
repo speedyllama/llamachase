@@ -17,65 +17,45 @@
             this.ropeThrow.disable();
 
             var sliderOptions = {};
+
+            function newFingerFunction(destX, destY) {
+                return function() {
+                    var finger = new cc.Sprite(res.Finger);
+                    finger.setScale(0.5);
+                    finger.setPosition(600, 200);
+                    this.addChild(finger);
+                    this.slider.hide();
+
+                    var fingerAction = cc.sequence(
+                        cc.delayTime(0.6),
+                        cc.moveTo(0.3, destX, destY),
+                        cc.callFunc(function(){
+                            this.ropeThrow.enable();
+                            this.ropeThrow.moveRope(new cc.Point(destX, destY));
+
+                            this.runAction(cc.sequence(
+                                cc.delayTime(3),
+                                cc.callFunc(function(){
+                                    this.removeChild(finger);
+                                    this.ropeThrow.disable();
+                                    this.slider.next();
+                                }, this)
+                            ));
+                        }, this)
+                    )
+                    finger.runAction(fingerAction);
+                }
+            }
+
             var slides = [
                 {
                     text: i18n.getText('Swipe on your screen to try to catch the llama. The longer you swipe, the farther the rope goes.'),
                     button: i18n.getText('Watch Demo'),
-                    callback: function(){
-                        var finger = new cc.Sprite(res.Finger);
-                        finger.setScale(0.5);
-                        finger.setPosition(600, 200);
-                        this.addChild(finger);
-                        this.slider.hide();
-
-                        var fingerAction = cc.sequence(
-                            cc.delayTime(1),
-                            cc.moveTo(0.3, 540, 930),
-                            cc.callFunc(function(){
-                                this.ropeThrow.enable();
-                                this.ropeThrow.moveRope(new cc.Point(540, 930));
-
-                                this.runAction(cc.sequence(
-                                    cc.delayTime(3),
-                                    cc.callFunc(function(){
-                                        this.removeChild(finger);
-                                        this.ropeThrow.disable();
-                                        this.slider.next();
-                                    }, this)
-                                ));
-                            }, this)
-                        )
-                        finger.runAction(fingerAction);
-                    }.bind(this)
+                    callback: newFingerFunction(540, 930).bind(this)
                 },{
                     text: i18n.getText('You can swipe to a different direction as well. But, don\'t swipe too much, or the rope will be out of the screen.'),
                     button: i18n.getText('Watch Demo'),
-                    callback: function() {
-                        var finger = new cc.Sprite(res.Finger);
-                        finger.setScale(0.5);
-                        finger.setPosition(600, 200);
-                        this.addChild(finger);
-                        this.slider.hide();
-
-                        var fingerAction = cc.sequence(
-                            cc.delayTime(1),
-                            cc.moveTo(0.3, 800, 930),
-                            cc.callFunc(function(){
-                                this.ropeThrow.enable();
-                                this.ropeThrow.moveRope(new cc.Point(800, 930));
-
-                                this.runAction(cc.sequence(
-                                    cc.delayTime(3),
-                                    cc.callFunc(function(){
-                                        this.removeChild(finger);
-                                        this.ropeThrow.disable();
-                                        this.slider.next();
-                                    }, this)
-                                ));
-                            }, this)
-                        )
-                        finger.runAction(fingerAction);
-                    }.bind(this)
+                    callback: newFingerFunction(800, 930).bind(this)
                 }
             ];
             this.slider = new Slider(this, slides, sliderOptions);
