@@ -19,8 +19,9 @@
         ropeLength: null,
         enabled: true,
 
-        ctor: function(layer) {
+        ctor: function(layer, catchCallback) {
             this.layer = layer;
+            this.catchCallback = catchCallback;
 
             this.anchorPos = new cc.Point(512, 256);
             var rope = new cc.Sprite('res/rope.png');
