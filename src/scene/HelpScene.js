@@ -30,7 +30,7 @@
 
                         var fingerAction = cc.sequence(
                             cc.delayTime(1),
-                            cc.moveTo(0.3, 600, 930),
+                            cc.moveTo(0.3, 540, 930),
                             cc.callFunc(function(){
                                 this.ropeThrow.enable();
                                 this.ropeThrow.moveRope(new cc.Point(540, 930));
@@ -62,11 +62,12 @@
                             cc.moveTo(0.3, 800, 930),
                             cc.callFunc(function(){
                                 this.ropeThrow.enable();
-                                this.ropeThrow.moveRope(new cc.Point(640, 930));
+                                this.ropeThrow.moveRope(new cc.Point(800, 930));
 
                                 this.runAction(cc.sequence(
                                     cc.delayTime(3),
                                     cc.callFunc(function(){
+                                        this.removeChild(finger);
                                         this.ropeThrow.disable();
                                         this.slider.next();
                                     }, this)
