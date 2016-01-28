@@ -58,19 +58,25 @@
             }
 
             function tryStaticLlama() {
+                this.llama.llama.runAction(
+                    cc.moveTo(0.2, new cc.Point(200, 1600))
+                );
                 this.slider.hide();
                 this.llama.jump();
                 this.ropeThrow.setCatchCallback(function(pos){
                     var isCaught = this.llama.ropeCallback(pos);
                     if (isCaught) {
-                        this.slider.next();
+                        this.runAction(cc.sequence(
+                            cc.delayTime(2),
+                            cc.callFunc(function(){
+                                this.ropeThrow.reset();
+                                this.slider.next();
+                            }, this)
+                        ));
                     }
                     return isCaught;
                 }, this);
-                this.llama.llama.runAction(
-                    cc.moveTo(0.2, new cc.Point(200, 1600))
-                );
-                setTimeout(function(){this.ropeThrow.enable();}.bind(this), 0.5);
+                this.ropeThrow.enable();
             }
 
             var slides = [

@@ -43,10 +43,8 @@
             var distanceSquare = Math.pow((ropePos.x - this.llama.x), 2) +
                 Math.pow((ropePos.y - this.llama.y), 2);
             if (distanceSquare > LLAMA_CAUGHT_THRESHOLD) {
-                console.log('N');
                 return false;
             }
-            console.log('Y');
             this.stopJump();
             return true;
         }
