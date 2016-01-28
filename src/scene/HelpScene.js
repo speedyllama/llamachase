@@ -31,6 +31,7 @@
                         cc.moveTo(0.3, destX, destY),
                         cc.callFunc(function(){
                             this.ropeThrow.enable();
+                            this.ropeThrow.setCatchCallback(this.llama);
                             this.ropeThrow.moveRope(new cc.Point(destX, destY));
                             this.ropeThrow.disable();
 

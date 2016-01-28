@@ -13,3 +13,6 @@ const ROPE_WAIT = 0.5;
 const ROPE_MAX_PERCENTAGE = 0.5;
 const ROPE_SPEED = 1080 / 0.5;
 const ROPE_RETRIEVE_SPEED = 1080 / 1;
+// Max square distance between the rope and the llama.
+// If smaller than this threshold, the llama is considered caught.
+const LLAMA_CAUGHT_THRESHOLD = 128 * 128;

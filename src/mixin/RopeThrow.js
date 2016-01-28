@@ -4,7 +4,7 @@
 
         // Called when the rope reached the destination.
         // Returns false to continue retrieving the rope,
-        // true means if it handled.
+        // true means if it handed.
         catchCallback: null,
 
         // Callback return
@@ -43,6 +43,10 @@
                     onMouseUp: this.onTouchEnded.bind(this)
                 }, layer);
             }
+        },
+
+        setCatchCallback: function(catchCallback) {
+            this.catchCallback = catchCallback;
         },
 
         onTouchBegan: function(touch) {
@@ -103,8 +107,8 @@
             var action = cc.sequence(
                 cc.moveTo(this.ropeLength / ROPE_SPEED, this.targetPos).easing(cc.easeBackIn()),
                 cc.callFunc(function(){
-                    if (typeof this.catchCallback == 'function') {
-                        this.isCaught = this.catchCallback.call(this);
+                    if (this.catchCallback && typeof this.catchCallback.ropeCallback == 'function') {
+                        this.isCaught = this.catchCallback.ropeCallback(this.endPos);
                         if (this.isCaught) {
                             this.rope.stopAllActions();
                             this.ropeMoving = false;
