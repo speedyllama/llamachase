@@ -57,10 +57,22 @@
                 }
             }
 
-            function tryStaticLlama() {
-                this.llama.llama.runAction(
-                    cc.moveTo(0.2, new cc.Point(200, 1600))
-                );
+            function tryYourself(isRun) {
+                if (isRun) {
+                    var action = cc.repeatForever(
+                        cc.sequence(
+                            cc.moveTo(2, new cc.Point(880, 1600)),
+                            cc.scaleBy(0.5, -1, 1),
+                            cc.moveTo(2, new cc.Point(200, 1600)),
+                            cc.scaleBy(0.5, -1, 1)
+                        )
+                    );
+                    this.llama.llama.runAction(action);
+                } else {
+                    this.llama.llama.runAction(
+                        cc.moveTo(0.2, new cc.Point(200, 1600))
+                    );
+                }
                 this.slider.hide();
                 this.llama.jump();
                 this.ropeThrow.setCatchCallback(function(pos){
@@ -91,11 +103,15 @@
                 },{
                     text: i18n.getText('Now try it yourself.'),
                     button: i18n.getText('OK!'),
-                    callback: tryStaticLlama.bind(this)
+                    callback: function(){tryYourself.call(this, false);}.bind(this)
                 },{
                     text: i18n.getText('Great! Now try to catch a running llama.'),
                     button: i18n.getText('OK!'),
-                    callback: tryStaticLlama.bind(this)
+                    callback: function(){tryYourself.call(this, true);}.bind(this)
+                },{
+                    text: i18n.getText('Congratulations! You have graduated from the Llama Catching School!'),
+                    button: i18n.getText('Yeah!'),
+                    callback: function(){cc.director.runScene(new cc.TransitionJumpZoom(1, new WelcomeScene()));}
                 }
             ];
             this.slider = new Slider(this, slides, sliderOptions);
