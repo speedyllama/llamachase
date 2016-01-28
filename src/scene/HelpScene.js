@@ -76,7 +76,7 @@
                     }
                     return isCaught;
                 }, this);
-                this.ropeThrow.enable();
+                setTimeout(function(){this.ropeThrow.enable();}.bind(this), 500);
             }
 
             var slides = [
