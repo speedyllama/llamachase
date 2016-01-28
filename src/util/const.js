@@ -16,3 +16,5 @@ const ROPE_RETRIEVE_SPEED = 1080 / 1;
 // Max square distance between the rope and the llama.
 // If smaller than this threshold, the llama is considered caught.
 const LLAMA_CAUGHT_THRESHOLD = 128 * 128;
+// Delay seconds when llama is caught until the next movement.
+const LLAMA_CAUGHT_DELAY = 2;

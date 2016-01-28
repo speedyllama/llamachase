@@ -43,7 +43,7 @@
                             this.ropeThrow.disable();
 
                             this.runAction(cc.sequence(
-                                cc.delayTime(2),
+                                cc.delayTime(LLAMA_CAUGHT_DELAY),
                                 cc.callFunc(function(){
                                     this.ropeThrow.reset();
                                     this.removeChild(finger);
@@ -67,7 +67,7 @@
                     var isCaught = this.llama.ropeCallback(pos);
                     if (isCaught) {
                         this.runAction(cc.sequence(
-                            cc.delayTime(2),
+                            cc.delayTime(LLAMA_CAUGHT_DELAY),
                             cc.callFunc(function(){
                                 this.ropeThrow.reset();
                                 this.slider.next();
