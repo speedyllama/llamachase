@@ -33,19 +33,21 @@
         },
 
         stopJump: function() {
-            if (typeof this.jumpAction == 'function') {
-                this.llama.stopAction(this.jumpAction);
+            if (this.jumpAction) {
+                this.llama.stopAllActions();
+                this.jumpAction = null;
             }
         },
 
         ropeCallback: function(ropePos) {
-            var distanceSquare = Math.pow((ropePos.x - this.llama.pos), 2) +
-                Math.pow((ropePos.y - this.llama.pos), 2);
+            var distanceSquare = Math.pow((ropePos.x - this.llama.x), 2) +
+                Math.pow((ropePos.y - this.llama.y), 2);
             if (distanceSquare > LLAMA_CAUGHT_THRESHOLD) {
-                console.log('NOT CAUGHT');
+                console.log('N');
                 return false;
             }
-            console.log('CAUGHT');
+            console.log('Y');
+            this.stopJump();
             return true;
         }
     });

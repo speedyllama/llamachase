@@ -6,6 +6,7 @@
         // Returns false to continue retrieving the rope,
         // true means if it handed.
         catchCallback: null,
+        catchCallbackObject: null,
 
         // Callback return
         isCaught: false,
@@ -45,7 +46,8 @@
             }
         },
 
-        setCatchCallback: function(catchCallback) {
+        setCatchCallback: function(catchCallback, object) {
+            this.catchCallbackObject = object;
             this.catchCallback = catchCallback;
         },
 
@@ -107,8 +109,9 @@
             var action = cc.sequence(
                 cc.moveTo(this.ropeLength / ROPE_SPEED, this.targetPos).easing(cc.easeBackIn()),
                 cc.callFunc(function(){
-                    if (this.catchCallback && typeof this.catchCallback.ropeCallback == 'function') {
-                        this.isCaught = this.catchCallback.ropeCallback(this.endPos);
+                    if (typeof this.catchCallback == 'function') {
+                        var object = this.catchCallbackObject || this;
+                        this.isCaught = this.catchCallback.call(object, this.targetPos);
                         if (this.isCaught) {
                             this.rope.stopAllActions();
                             this.ropeMoving = false;
@@ -116,6 +119,17 @@
                     }
                 }.bind(this)),
                 cc.delayTime(ROPE_WAIT),
+                cc.moveTo(this.ropeLength / ROPE_RETRIEVE_SPEED, this.anchorPos),
+                cc.callFunc(function(){
+                    this.ropeMoving = false;
+                }.bind(this))
+            );
+            this.rope.runAction(action);
+        },
+
+        reset: function() {
+            this.ropeMoving = true;
+            var action = cc.sequence(
                 cc.moveTo(this.ropeLength / ROPE_RETRIEVE_SPEED, this.anchorPos),
                 cc.callFunc(function(){
                     this.ropeMoving = false;
