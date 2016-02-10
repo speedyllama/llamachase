@@ -13,15 +13,20 @@
         },
 
         enter: function(duration, x, y) {
-            duration = duration ? duration : 0.5;
+            duration = duration !== undefined ? duration : 0.5;
             x = x !== undefined ? x : 540;
             y = y !== undefined ? y : 1600;
 
-            this.llama.x = -x;
-            this.llama.y = y;
+            if (duration <= 0) {
+                this.llama.x = x;
+                this.llama.y = y;
+            } else {
+                this.llama.x = -x;
+                this.llama.y = y;
 
-            var move = cc.moveTo(duration, x, y);
-            this.llama.runAction(move);
+                var move = cc.moveTo(duration, x, y);
+                this.llama.runAction(move);
+            }
         },
 
         jump: function() {

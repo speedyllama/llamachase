@@ -44,7 +44,7 @@
                     button: i18n.getText('OK'),
                     callback: function(){
                         this.llama = new Llama(this);
-                        this.llama.enter();
+                        this.llama.enter(0, 200, 1600);
                         this.llama.jump();
 
                         this.llama.llama.runAction(this.city.action);
