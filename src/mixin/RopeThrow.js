@@ -18,7 +18,7 @@
         rope: null,
         ropeMoving: false,
         ropeLength: null,
-        enabled: true,
+        enabled: false,
 
         ctor: function(layer, catchCallback) {
             this.layer = layer;
@@ -44,6 +44,9 @@
                     onMouseUp: this.onTouchEnded.bind(this)
                 }, layer);
             }
+
+            // Disable first, then enable in 500ms to avoid initial double touch.
+            setTimeout(function(){this.enable();}.bind(this), 500);
         },
 
         setCatchCallback: function(catchCallback, object) {

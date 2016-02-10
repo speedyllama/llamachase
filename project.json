@@ -22,6 +22,7 @@
         "src/mixin/Llama.js",
         "src/scene/WelcomeScene.js",
         "src/scene/HelpScene.js",
+        "src/scene/PlayScene.js",
         "src/app.js"
     ]
 }
