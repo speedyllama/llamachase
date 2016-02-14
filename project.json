@@ -17,7 +17,7 @@
         "src/util/ladybug.js",
         "src/util/i18n.js",
         "src/helper/BackgroundFactory.js",
-        "src/actionfactory/BackAndForthActionFactory.js",
+        "src/actionfactory/ForthAndBackActionFactory.js",
         "src/mixin/RopeThrow.js",
         "src/mixin/Slider.js",
         "src/mixin/Llama.js",

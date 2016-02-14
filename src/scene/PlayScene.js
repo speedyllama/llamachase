@@ -5,12 +5,12 @@
         {
             name: "New York",
             intro: "New York Intro",
-            action: BackAndForthActionFactory.newAction(undefined, undefined, 1, 1)
+            action: ForthAndBackActionFactory.newAction(undefined, undefined, 1, 1)
         },
         {
             name: "Shanghai",
             intro: "Shanghai Intro",
-            action: BackAndForthActionFactory.newAction(undefined, undefined, 0.5, 1)
+            action: ForthAndBackActionFactory.newAction(undefined, undefined, 0.5, 1)
         }
     ];
 

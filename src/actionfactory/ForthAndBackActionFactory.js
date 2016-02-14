@@ -1,5 +1,5 @@
 (function(){
-    BackAndForthActionFactory = {
+    ForthAndBackActionFactory = {
         newAction: function(minY, maxY, minTime, maxTime){
             return function(llama) {
                 function move() {
