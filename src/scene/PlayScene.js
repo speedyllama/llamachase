@@ -19,12 +19,17 @@
         city: null,
         llama: null,
         ropeThrow: null,
+        timer: null,
 
         ctor: function() {
             this._super();
             this.city = cities[cityCounter++];
 
             this.addChild(BackgroundFactory.newYellowBackground());
+
+            this.timer = new Timer();
+            this.addChild(this.timer);
+
             var slides = [
                 {
                     text: i18n.getText(this.city.intro),
@@ -45,12 +50,14 @@
                                     cc.callFunc(function(){
                                         this.ropeThrow.reset();
                                         this.nextCity();
+                                        this.timer.stop();
                                     }, this)
                                 ));
                             }
                             return isCaught;
                         }, this);
 
+                        this.timer.start();
                         this.slider.hide();
                     }.bind(this)
                 }
