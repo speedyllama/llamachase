@@ -46,11 +46,13 @@
                             var isCaught = this.llama.ropeCallback(pos);
                             if (isCaught) {
                                 this.runAction(cc.sequence(
+                                    cc.callFunc(function(){
+                                        this.timer.stop();
+                                    }, this),
                                     cc.delayTime(LLAMA_CAUGHT_DELAY),
                                     cc.callFunc(function(){
                                         this.ropeThrow.reset();
                                         this.nextCity();
-                                        this.timer.stop();
                                     }, this)
                                 ));
                             }
