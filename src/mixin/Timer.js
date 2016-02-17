@@ -6,9 +6,16 @@
 
     var totalTime = 0;
 
-    function displayTime() {
-        var time = ((new Date() - this.lastStartTime) / 1000 + Number(totalTime)).toFixed(2);
+    function calculateTime() {
+        var time = (new Date() - this.lastStartTime) / 1000 + totalTime;
         return time;
+    }
+
+    function displayTime(time) {
+        if (time == undefined) {
+            time = calculateTime.call(this);
+        }
+        return time.toFixed(2);
     }
 
     Timer = cc.Layer.extend({
@@ -22,14 +29,14 @@
             if (reset == true) {
                 totalTime = 0;
             }
-            this.clock = new cc.LabelTTF(totalTime, FONT, FONT_SIZE, undefined, cc.TEXT_ALIGNMENT_CENTER);
+            this.clock = new cc.LabelTTF(displayTime(totalTime), FONT, FONT_SIZE, undefined, cc.TEXT_ALIGNMENT_CENTER);
             this.clock.setPosition(POS_X, POS_Y);
             this.addChild(this.clock);
         },
 
         update: function() {
-            var time = displayTime.call(this);
-            this.clock.setString(time);
+            var timeStr = displayTime.call(this);
+            this.clock.setString(timeStr);
         },
 
         start: function() {
@@ -38,8 +45,9 @@
         },
 
         stop: function() {
+            totalTime = calculateTime.call(this);
             this.unscheduleUpdate();
-            totalTime += displayTime.call(this);
+            this.clock.setString(displayTime(totalTime));
             this.lastStartTime = null;
         }
     });
