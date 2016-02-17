@@ -69,6 +69,7 @@
 
         nextCity: function() {
             if (cityCounter >= cities.length) {
+                cityCounter = 0;
                 // TODO: go to success scene
                 cc.director.runScene(new WelcomeScene());
             } else {

@@ -6,6 +6,11 @@
 
     var totalTime = 0;
 
+    function displayTime() {
+        var time = ((new Date() - this.lastStartTime) / 1000 + Number(totalTime)).toFixed(2);
+        return time;
+    }
+
     Timer = cc.Layer.extend({
         layer: null,
         clock: null,
@@ -14,17 +19,16 @@
         ctor: function(reset) {
             this._super();
 
-            var initialTime = totalTime;
             if (reset == true) {
-                initialTime = 0;
+                totalTime = 0;
             }
-            this.clock = new cc.LabelTTF(initialTime, FONT, FONT_SIZE, undefined, cc.TEXT_ALIGNMENT_CENTER);
+            this.clock = new cc.LabelTTF(totalTime, FONT, FONT_SIZE, undefined, cc.TEXT_ALIGNMENT_CENTER);
             this.clock.setPosition(POS_X, POS_Y);
             this.addChild(this.clock);
         },
 
         update: function() {
-            var time = ((new Date() - this.lastStartTime) / 1000).toFixed(2);
+            var time = displayTime.call(this);
             this.clock.setString(time);
         },
 
@@ -35,7 +39,7 @@
 
         stop: function() {
             this.unscheduleUpdate();
-            totalTime += ((new Date() - this.lastStartTime) / 1000);
+            totalTime += displayTime.call(this);
             this.lastStartTime = null;
         }
     });
