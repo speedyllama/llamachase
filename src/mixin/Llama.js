@@ -45,6 +45,10 @@
         },
 
         ropeCallback: function(ropePos) {
+            // TODO: test. always caught.
+            this.stopJump();
+            return true;
+
             var distanceSquare = Math.pow((ropePos.x - this.llama.x), 2) +
                 Math.pow((ropePos.y - this.llama.y), 2);
             if (distanceSquare > LLAMA_CAUGHT_THRESHOLD) {

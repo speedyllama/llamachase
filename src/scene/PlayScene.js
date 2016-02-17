@@ -27,7 +27,7 @@
 
             this.addChild(BackgroundFactory.newYellowBackground());
 
-            this.timer = new Timer();
+            this.timer = new Timer(true);
             this.addChild(this.timer);
 
             var slides = [
