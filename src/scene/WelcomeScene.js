@@ -19,7 +19,8 @@
         ctor: function() {
             this._super();
 
-            cc.MenuItemFont.setFontName(i18n.getText('Marck Script'));
+            //cc.MenuItemFont.setFontName(i18n.getText('Marck Script'));
+            cc.MenuItemFont.setFontName(res.MarckScript);
             cc.MenuItemFont.setFontSize(164);
             var help = new cc.MenuItemFont(i18n.getText('Help'), function(){cc.director.runScene(new cc.TransitionFade(1, new HelpScene()))});
             var play = new cc.MenuItemFont(i18n.getText('Play'), function(){cc.director.runScene(new PlayScene())});
